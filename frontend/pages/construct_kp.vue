@@ -2,26 +2,61 @@
   <div>
     <v-overlay :value="filter" color="#EDF0F4" opacity="1">
       <v-list id="menu" flat>
-        <v-list-item-title id="menu-item-text">Фильтры</v-list-item-title>
-        <v-list-item-content>
-          <v-list-item>
-            <v-list-item-content>
-              <v-text-field></v-text-field>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-content>
-              <v-text-field></v-text-field>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-content>
-              <v-text-field></v-text-field>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-content>
+        <!-- <v-list-title id="menu-item-text">Фильтры</v-list-item-title> -->
+        <v-list-item>
+          <v-list-item-content>
+            <v-select outlined label="Standard"></v-select>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-subtitle>1</v-list-item-subtitle>
+            <v-select outlined label="Standard"></v-select>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title> Выберите площадь </v-list-item-title>
+            <div style="display: flex; gap: 8px">
+              <v-text-field placeholder="От" outlined></v-text-field>
+              <v-text-field placeholder="До" outlined></v-text-field>
+            </div>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
 
-        <!-- <v-btn color="#5790FF">Конструктор предложений</v-btn> -->
+          <v-card-text>
+            <v-slider
+            :tick-labels="ticksLabels"
+            :max="6"
+            step="1"
+            ticks="always"
+            tick-size="4"
+          ></v-slider>
+        </v-card-text>
+          </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title> Выберите площадь </v-list-item-title>
+            <div style="display: flex; gap: 8px">
+              <v-text-field placeholder="От" outlined></v-text-field>
+              <v-text-field placeholder="До" outlined></v-text-field>
+            </div>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title> Выберите площадь </v-list-item-title>
+            <div style="display: flex; gap: 8px">
+              <v-text-field placeholder="От" outlined></v-text-field>
+              <v-text-field placeholder="До" outlined></v-text-field>
+            </div>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+
+          <v-btn color="#5790FF">Применить</v-btn>
+        </v-list-item>
       </v-list>
     </v-overlay>
     <div
@@ -52,6 +87,14 @@ export default {
   data() {
     return {
       filter: false,
+      ticksLabels: [
+          '1',
+          '2',
+          '3',
+          '4',
+          '5',
+          '>6',
+        ],
     };
   },
   methods: {
@@ -71,13 +114,17 @@ export default {
   }
 }
 #menu {
-  background: white;
-  color: black;
+  // background: white;
+  // color: black;
   width: 100%;
   border-radius: 8px;
-  padding:  10px 17px;
-  box-shadow: 2px 2px 8px 0px #08122F1F;
+  padding: 10px 17px;
+  box-shadow: 2px 2px 8px 0px #08122f1f;
   max-width: 300px;
+}
+#list {
+  // background: black;
+  display: flex;
 
 }
 </style>
