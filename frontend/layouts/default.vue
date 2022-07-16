@@ -15,15 +15,14 @@
             <v-list-item-title id="menu-item-text" v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
+        <v-btn>Конструктор предложений</v-btn>
       </v-list>
     </v-overlay>
     <v-app-bar id="header" fixed app>
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <v-btn icon @click.stop="menu = !menu">
-        <v-icon id="header__but">
-          mdi-menu
-        </v-icon>
+        <v-icon id="header__but"> mdi-menu </v-icon>
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -41,48 +40,49 @@
 </template>
 
 <script>
-import '../assets/global.scss'
+import "../assets/global.scss";
 export default {
-  name: 'DefaultLayout',
-  data () {
+  name: "DefaultLayout",
+  data() {
     return {
       items: [
         {
-          title: 'Задачи',
-          to: '/'
+          title: "Задачи",
+          to: "/",
         },
         {
-          title: 'Клиенты',
-          to: '/'
+          title: "Клиенты",
+          to: "/",
         },
         {
-          title: 'Объекты',
-          to: '/create_object'
+          title: "Объекты",
+          to: "/create_object",
         },
         {
-          title: 'Аналитика',
-          to: '/'
+          title: "Аналитика",
+          to: "/",
         },
         {
-          title: 'Вознаграждения',
-          to: '/'
-        }
+          title: "Вознаграждения",
+          to: "/",
+        },
       ],
       menu: false,
-      title: 'Поребрик'
-    }
+      title: "Поребрик",
+    };
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap");
 
 #header {
-  background: #f5f7ff;
+  background: #0f1e34;
   box-shadow: 0px 4px 8px 0px #0511321a;
+  color: white;
   &__but {
-    color: #5790ff;
+    color: #EDF0F4;
   }
 }
 
@@ -97,6 +97,6 @@ export default {
 }
 
 #menu-item-text {
-  font-size: 2rem;
+  font-size: 1rem;
 }
 </style>
