@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger
 from fastapi.staticfiles import StaticFiles
+from routers.building import router as building_router
 
 app = FastAPI()
 
@@ -14,6 +15,7 @@ def startup_event():
     logger.info("App started")
 
 
+app.include_router(building_router, prefix="/building")
 app.add_middleware(CORSMiddleware, allow_origins=[
                    "*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"],)
 

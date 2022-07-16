@@ -1,17 +1,6 @@
 version: "3.7"
 
 services:
-  server:
-    ports:
-      - 3000:3000
-    networks:
-      - container_net
-    build:
-      context: .
-      dockerfile: backend.dockerfile
-    depends_on:
-      db:
-        condition: service_started
   db:
     image: postgres
     restart: always
@@ -21,20 +10,17 @@ services:
       - 5432:5432
     env_file:
       - .env
-
-  frontend:
-    image: frontend
-    restart: always
+  server:
+    ports:
+      - 80:8000
     networks:
       - container_net
-    ports:
-      - 8000:8000
-    build:
-      context: .
-      dockerfile: frontend.dockerfile
+    build: .
     depends_on:
-      - server
-
+      db:
+        condition: service_started
+    volumes:
+      - .:/app
 networks:
   container_net:
     external: true

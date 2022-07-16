@@ -1,21 +1,23 @@
 <template>
   <div>
     <v-btn v-if="chosenFlats.length > 0" fixed style="bottom: 23px; color: white; z-index:999;" color="#00A8F2">Сформировать предложение</v-btn>
-    <v-overlay :value="filter" color="#EDF0F4" opacity="1">
-      <v-list id="menu"  dense elevation expand>
+    <v-overlay :value="filter" color="#EDF0F4" opacity="0.5">
+      <v-list id="menu" dense elevation>
         <!-- <v-list-title id="menu-item-text">Фильтры</v-list-item-title> -->
         <v-list-item id="list-item">
           <v-list-item-content>
-            <v-list-item-title class="">Фильтры</v-list-item-title>
+            <v-list-item-title>Фильтры</v-list-item-title>
             <v-select outlined label="Standard"></v-select>
           </v-list-item-content>
         </v-list-item>
+
         <v-list-item id="list-item">
           <v-list-item-content>
-            <v-list-item-subtitle>1</v-list-item-subtitle>
+            <v-list-item-title>1</v-list-item-title>
             <v-select outlined label="Standard"></v-select>
           </v-list-item-content>
         </v-list-item>
+
         <v-list-item id="list-item">
           <v-list-item-content>
             <v-list-item-title> Выберите площадь </v-list-item-title>
@@ -25,6 +27,7 @@
             </div>
           </v-list-item-content>
         </v-list-item>
+
         <v-list-item>
 
           <v-card-text>
@@ -46,6 +49,7 @@
             </div>
           </v-list-item-content>
         </v-list-item>
+
         <v-list-item id="list-item">
           <v-list-item-content>
             <v-list-item-title> Выберите площадь </v-list-item-title>
@@ -55,8 +59,8 @@
             </div>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item id="list-item">
 
+        <v-list-item id="list-item">
           <v-btn color="#5790FF" @click="toggleFilter">Применить</v-btn>
         </v-list-item>
       </v-list>
