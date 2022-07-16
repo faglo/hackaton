@@ -1,3 +1,4 @@
+eslint-disable 
 module.exports = {
   root: true,
   env: {
@@ -14,5 +15,9 @@ module.exports = {
   rules: {
     skipBlankLines: true,
     "space-before-function-paren": ["never"],
+    "vue/multi-word-component-names": ["error", {
+      "ignores": []
+    }],
+    "eol-last": "never"
   },
 };
