@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app>
     <v-overlay :value="menu">
       <v-list id="menu" flat>
         <v-list-item
