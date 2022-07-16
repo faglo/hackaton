@@ -1,6 +1,24 @@
 <template>
   <v-app>
-    <v-overlay :value="menu" color="white" opacity="1">
+    <v-overlay :value="menu" color="#0f1e34" opacity="1">
+      <v-row justify="center">
+        <v-col cols="3">
+          <v-avatar
+            color="primary"
+            size="50"
+          >AP</v-avatar>
+        </v-col>
+        <v-col id="my_profile_text">
+          Мой профиль
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col sm="12">
+          <v-divider/>
+        </v-col>
+      </v-row>
+      
       <v-list id="menu" flat>
         <v-list-item
           v-for="(item, i) in items"
@@ -11,11 +29,13 @@
           :ripple="false"
           @click="menu = false"
         >
+          <v-list-item-icon>
+            <v-icon v-text="item.icon"></v-icon>
+          </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title id="menu-item-text" v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
-        <v-btn color="#5790FF" :to="constructor_link" router @click="menu = false">Конструктор предложений</v-btn>
       </v-list>
     </v-overlay>
     <v-app-bar id="header" fixed app>
@@ -30,12 +50,6 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <!-- <v-footer
-      :absolute="!fixed"
-      app
-    >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer> -->
   </v-app>
 </template>
 
@@ -47,33 +61,58 @@ export default {
     return {
       items: [
         {
-          title: "Задачи",
-          to: "/",
-        },
-        {
-          title: "Клиенты",
-          to: "/clients",
-        },
-        {
-          title: "Объекты",
-          to: "/create_object",
-        },
-        {
-          title: "Аналитика",
-          to: "/",
-        },
-        {
+          icon: "mdi-cash-multiple",
           title: "Вознаграждения",
           to: "/",
         },
         {
+          icon: "mdi-account-multiple",
+          title: "Клиенты",
+          to: "/clients",
+        },
+        {
+          icon: "mdi-clock-outline",
+          title: "Задачи",
+          to: "/",
+        },
+        {
+          icon: "mdi-home-city",
+          title: "Объекты недвижимости",
+          to: "/create_object",
+        },
+        {
+          icon: "mdi-plus-box",
           title: "Конструктор предложений",
-          to: "/constructor",
+          to: "/construct_kp",
+        },
+        {
+          icon: "mdi-timer-sand-full",
+          title: "Бронирование просмотра",
+          to: "/",
+        },
+        {
+          icon: "mdi-calculator",
+          title: "Кредитный калькулятор",
+          to: "/",
+        },
+        {
+          icon: "mdi-signal-cellular-1",
+          title: "Аналитика",
+          to: "/",
+        },
+        {
+          icon: "mdi-school",
+          title: "Обучение",
+          to: "/",
+        },
+        {
+          icon: "mdi-cog",
+          title: "Настройки",
+          to: "/",
         }
       ],
       menu: false,
       title: "Поребрик",
-      constructor_link: "/search_objects"
     };
   },
 };
@@ -102,11 +141,21 @@ export default {
 
 #menu-item {
   height: 66px;
-  text-align: center;
-  color: black;
+  text-align: left;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+
+  color: white;
 }
 
 #menu-item-text {
   font-size: 1rem;
+  font-weight: bold;
+  color: white;
+}
+
+#my_profile_text { 
+  padding-top: 1.5rem;
 }
 </style>
