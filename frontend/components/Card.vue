@@ -24,7 +24,7 @@
         <div id="card__rout">
           <span>{{ flatPrice }} ₽</span>
           <!-- <v-container fluid class="px-0"> -->
-          <v-checkbox></v-checkbox>
+          <v-checkbox @click="$emit('addFlat')"></v-checkbox>
           <!-- </v-container> -->
         </div>
       </div>

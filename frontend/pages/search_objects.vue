@@ -1,25 +1,27 @@
 <template>
   <div>
+    <v-btn v-if="chosenFlats.length > 0" fixed style="bottom: 23px; color: white; z-index:999;" color="#00A8F2">Сформировать предложение</v-btn>
     <v-overlay :value="filter" color="#EDF0F4" opacity="1">
-      <v-list id="menu" flat>
+      <v-list id="menu"  dense elevation expand>
         <!-- <v-list-title id="menu-item-text">Фильтры</v-list-item-title> -->
-        <v-list-item>
+        <v-list-item id="list-item">
           <v-list-item-content>
+            <v-list-item-title class="">Фильтры</v-list-item-title>
             <v-select outlined label="Standard"></v-select>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item>
+        <v-list-item id="list-item">
           <v-list-item-content>
             <v-list-item-subtitle>1</v-list-item-subtitle>
             <v-select outlined label="Standard"></v-select>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item>
+        <v-list-item id="list-item">
           <v-list-item-content>
             <v-list-item-title> Выберите площадь </v-list-item-title>
             <div style="display: flex; gap: 8px">
-              <v-text-field placeholder="От" outlined></v-text-field>
-              <v-text-field placeholder="До" outlined></v-text-field>
+              <v-text-field hide-details placeholder="От" outlined></v-text-field>
+              <v-text-field hide-details placeholder="До" outlined></v-text-field>
             </div>
           </v-list-item-content>
         </v-list-item>
@@ -35,27 +37,27 @@
           ></v-slider>
         </v-card-text>
           </v-list-item>
-        <v-list-item>
+        <v-list-item id="list-item">
           <v-list-item-content>
             <v-list-item-title> Выберите площадь </v-list-item-title>
             <div style="display: flex; gap: 8px">
-              <v-text-field placeholder="От" outlined></v-text-field>
-              <v-text-field placeholder="До" outlined></v-text-field>
+              <v-text-field hide-details placeholder="От" outlined></v-text-field>
+              <v-text-field hide-details placeholder="До" outlined></v-text-field>
             </div>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item>
+        <v-list-item id="list-item">
           <v-list-item-content>
             <v-list-item-title> Выберите площадь </v-list-item-title>
             <div style="display: flex; gap: 8px">
-              <v-text-field placeholder="От" outlined></v-text-field>
-              <v-text-field placeholder="До" outlined></v-text-field>
+              <v-text-field hide-details placeholder="От" outlined></v-text-field>
+              <v-text-field hide-details placeholder="До" outlined></v-text-field>
             </div>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item>
+        <v-list-item id="list-item">
 
-          <v-btn color="#5790FF">Применить</v-btn>
+          <v-btn color="#5790FF" @click="toggleFilter">Применить</v-btn>
         </v-list-item>
       </v-list>
     </v-overlay>
@@ -70,6 +72,7 @@
       <div class="cards__grid">
         <Card
           v-for="i in 6"
+          @addFlat="addFlat"
           :key="i"
           :flat-name="'Квартира, 67 м2'"
           :flat-price="20000"
@@ -87,6 +90,7 @@ export default {
   data() {
     return {
       filter: false,
+      chosenFlats : [],
       ticksLabels: [
           '1',
           '2',
@@ -101,6 +105,9 @@ export default {
     toggleFilter() {
       this.filter = !this.filter;
     },
+    addFlat(){
+      this.chosenFlats.push('1')
+    }
   },
 };
 </script>
@@ -121,10 +128,5 @@ export default {
   padding: 10px 17px;
   box-shadow: 2px 2px 8px 0px #08122f1f;
   max-width: 300px;
-}
-#list {
-  // background: black;
-  display: flex;
-
 }
 </style>
