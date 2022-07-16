@@ -78,7 +78,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap");
 
 #main {
-  background-color: #edf0f4;
+  background-color: #FFFFFF;
 }
 
 #header {
