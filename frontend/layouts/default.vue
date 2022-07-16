@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-overlay :value="menu">
+    <v-overlay :value="menu" :opacity="1">
       <v-list id="menu" flat>
         <v-list-item
           v-for="(item, i) in items"
@@ -9,6 +9,7 @@
           :to="item.to"
           router
           :ripple="false"
+          @click="menu = false"
         >
           <v-list-item-content>
             <v-list-item-title id="menu-item-text" v-text="item.title" />
@@ -56,7 +57,7 @@ export default {
         },
         {
           title: 'Объекты',
-          to: '/'
+          to: '/create_object'
         },
         {
           title: 'Аналитика',
@@ -70,7 +71,7 @@ export default {
       menu: false,
       title: 'Поребрик'
     }
-  }
+  },
 }
 </script>
 
