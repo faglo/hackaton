@@ -11,22 +11,18 @@
           :ripple="false"
         >
           <v-list-item-content>
-            <v-list-item-title id="menu-item-text" v-text="item.title"  />
+            <v-list-item-title id="menu-item-text" v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-overlay>
-    <v-app-bar
-      fixed
-      app
-    >
+    <v-app-bar id="header" fixed app>
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn
-        icon
-        @click.stop="menu = !menu"
-      >
-        <v-icon>mdi-menu</v-icon>
+      <v-btn icon @click.stop="menu = !menu">
+        <v-icon id="header__but">
+          mdi-menu
+        </v-icon>
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -34,16 +30,17 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <v-footer
+    <!-- <v-footer
       :absolute="!fixed"
       app
     >
       <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
+    </v-footer> -->
   </v-app>
 </template>
 
 <script>
+import '../assets/global.scss'
 export default {
   name: 'DefaultLayout',
   data () {
@@ -71,26 +68,34 @@ export default {
         }
       ],
       menu: false,
-      title: 'Vuetify.js'
+      title: 'Поребрик'
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap");
 
-#menu {
-  background-color: rgba(193, 66, 66, 0.0);
-  font-family: 'Manrope', sans-serif;
+#header {
+  background: #f5f7ff;
+  box-shadow: 0px 4px 8px 0px #0511321a;
+  &__but {
+    color: #5790ff;
+  }
 }
 
-#menu-item{
+#menu {
+  background-color: rgba(149, 149, 149, 0);
+  // font-family: 'Manrope', sans-serif;
+}
+
+#menu-item {
   height: 66px;
   text-align: center;
 }
 
-#menu-item-text{
+#menu-item-text {
   font-size: 2rem;
 }
 </style>
