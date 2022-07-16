@@ -15,7 +15,7 @@
             <v-list-item-title id="menu-item-text" v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
-        <v-btn color="#5790FF">Конструктор предложений</v-btn>
+        <v-btn color="#5790FF" :to="constructor_link" router @click="menu = false">Конструктор предложений</v-btn>
       </v-list>
     </v-overlay>
     <v-app-bar id="header" fixed app>
@@ -69,6 +69,7 @@ export default {
       ],
       menu: false,
       title: "Поребрик",
+      constructor_link: "/search_objects"
     };
   },
 };
