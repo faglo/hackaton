@@ -17,10 +17,18 @@
                 >На сумму 1 250 000 000 ₽
               </v-list-item-subtitle>
             </v-list-item>
-            
+
             <v-list-item style="margin-bottom: 8px" v-for="i in 4" :key="i">
-              <v-card id="cont" @click="pushOrder">
-                <p style="font-size: 1rem">Сделка #6</p>
+              <v-card id="cont" @click="pushOrder()">
+                <p
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 1rem;
+                  "
+                >
+                  Сделка #6 <span>21.06.22</span>
+                </p>
                 <p>Двухкомнатная квартира в центре</p>
                 <p>8 200 450 ₽</p>
               </v-card>
@@ -38,7 +46,8 @@ export default {
   layout: "whitdefault",
   methods: {
     pushOrder() {
-      // $this.rotuer.push('1')
+      let id = 4;
+    //   this.$router.push(id);
     },
   },
 };
