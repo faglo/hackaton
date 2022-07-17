@@ -20,7 +20,7 @@
           :to="item.to"
           router
           :ripple="false"
-          @click="menu = false"
+          @click="chg"
         >
           <v-list-item-icon>
             <v-icon v-text="item.icon"></v-icon>
@@ -32,7 +32,7 @@
       </v-list>
     </v-overlay>
     <v-app-bar id="header" fixed app>
-      <v-toolbar-title v-text="title"  @click="$router.push('/') "/>
+      <v-toolbar-title v-text="title" @click="$router.push('/')" />
       <v-spacer />
       <v-btn icon @click.stop="menu = !menu">
         <v-icon id="header__but"> mdi-menu </v-icon>
@@ -50,13 +50,32 @@
 import "../assets/global.scss";
 export default {
   name: "DefaultLayout",
+  created() {
+    let param = this.$route.fullPath;
+    console.log(param);
+    if (param == "/clients") {
+      this.title = "Клиенты";
+    } else if (param == "/create_object") {
+      this.title = "Объекты недвижимости";
+    } else if (param == "/constructor") {
+      this.title = "Конструктор предложений";
+    } else if (param == "/calculator") {
+      this.title = "Кредитный калькулятор";
+    } else if (param == "/money") {
+      this.title = "Вознаграждения";
+    } else if (param == "/tasks") {
+      this.title = "Задачи";
+    } else if (param == "/booking") {
+      this.title = "Бронирование просмотра";
+    }
+  },
   data() {
     return {
       items: [
         {
           icon: "mdi-cash-multiple",
           title: "Вознаграждения",
-          to: "/",
+          to: "/money",
         },
         {
           icon: "mdi-account-multiple",
@@ -66,7 +85,7 @@ export default {
         {
           icon: "mdi-clock-outline",
           title: "Задачи",
-          to: "/",
+          to: "/tasks",
         },
         {
           icon: "mdi-home-city",
@@ -76,12 +95,12 @@ export default {
         {
           icon: "mdi-plus-box",
           title: "Конструктор предложений",
-          to: "/construct_kp",
+          to: "/constructor",
         },
         {
           icon: "mdi-timer-sand-full",
           title: "Бронирование просмотра",
-          to: "/",
+          to: "/booking",
         },
         {
           icon: "mdi-calculator",
@@ -101,12 +120,34 @@ export default {
         {
           icon: "mdi-cog",
           title: "Настройки",
-          to: "/",
+          to: "/settings",
         },
       ],
       menu: false,
       title: "Поребрик",
     };
+  },
+  methods: {
+    chg() {
+      this.menu = false;
+      let param = this.$route.fullPath;
+      console.log(param);
+      if (param == "/clients") {
+        this.title = "Клиенты";
+      } else if (param == "/create_object") {
+        this.title = "Объекты недвижимости";
+      } else if (param == "/constructor") {
+        this.title = "Конструктор предложений";
+      } else if (param == "/calculator") {
+        this.title = "Кредитный калькулятор";
+      } else if (param == "/money") {
+        this.title = "Вознаграждения";
+      } else if (param == "/tasks") {
+        this.title = "Задачи";
+      } else if (param == "/booking") {
+        this.title = "Бронирование просмотра";
+      }
+    },
   },
 };
 </script>

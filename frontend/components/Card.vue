@@ -22,7 +22,7 @@
         <div id="card__rout">
           <span>{{ flatPrice }} ₽</span>
           <!-- <v-container fluid class="px-0"> -->
-          <div>
+          <div v-if="showBox">
             <v-checkbox
               v-if="boxState === false"
               v-model="boxState"
@@ -48,6 +48,10 @@ export default {
     flatName: {
       type: String,
       required: true,
+    },
+    showBox: {
+      type: Boolean,
+      required: false,
     },
     flatPrice: {
       required: true,
