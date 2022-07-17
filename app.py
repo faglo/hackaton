@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger
 from fastapi.staticfiles import StaticFiles
 from routers.building import router as building_router
+from routers.offer import router as offer_router
 
 app = FastAPI()
 
@@ -16,6 +17,7 @@ def startup_event():
 
 
 app.include_router(building_router, prefix="/building")
+app.include_router(offer_router, prefix="/offer")
 app.add_middleware(CORSMiddleware, allow_origins=[
                    "*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"],)
 

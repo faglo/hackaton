@@ -16,3 +16,5 @@ class Building(Base):
     description = Column(String(400), nullable=False)
     photo_links = Column(ARRAY(String), nullable=False)
     rooms = Column(Integer, nullable=False)
+    address = Column(String(255), nullable=False,
+                     server_default='улица Неизвестная 1')

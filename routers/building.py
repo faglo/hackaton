@@ -7,7 +7,7 @@ from typing import List
 router = APIRouter()
 
 
-@router.get("/", response_model=List[Building])
+@router.get("/")
 def get_by_filter(
     residential_complex: str = None,
     building: str = None,
