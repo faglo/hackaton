@@ -22,7 +22,19 @@
         <div id="card__rout">
           <span>{{ flatPrice }} ₽</span>
           <!-- <v-container fluid class="px-0"> -->
-          <v-checkbox @click="$emit('addFlat')"></v-checkbox>
+          <div>
+            <v-checkbox
+              v-if="boxState === false"
+              v-model="boxState"
+              @click="$emit('addFlat')"
+            ></v-checkbox>
+            <v-checkbox
+              v-else
+              v-model="boxState"
+              true-value
+              @click="$emit('removeFlat')"
+            ></v-checkbox>
+          </div>
           <!-- </v-container> -->
         </div>
       </div>
@@ -50,7 +62,16 @@ export default {
     flatArea: {
       required: true,
     },
+    boxState: {
+      type: Boolean,
+      default: false,
+    },
   },
+  // data() {
+  //   return {
+  //     boxState: false,
+  //   };
+  // },
 };
 </script>
 

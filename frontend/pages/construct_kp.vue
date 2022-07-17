@@ -3,6 +3,7 @@
     <v-btn
       v-if="chosenFlats.length > 0"
       fixed
+      @click="postLink"
       style="bottom: 23px; color: white; z-index: 999"
       color="#00A8F2"
       >Сформировать предложение</v-btn
@@ -129,7 +130,8 @@
         <Card
           v-for="(res, id) in copied"
           :key="id"
-          @addFlat="addFlat"
+          @addFlat="addFlat(res)"
+          @removeFlat="removeFlat(res)"
           :flat-name="res.building"
           :flat-area="res.area"
           :flat-price="res.price"
@@ -144,6 +146,7 @@
 <script>
 import Card from "../components/Card.vue";
 import BuildingsAPI from "~/API/BuildingsAPI";
+import OffersAPI from "~/API/OffersAPI";
 export default {
   components: { Card },
   mounted() {
@@ -184,15 +187,26 @@ export default {
       price_from: 0,
       price_to: 0,
       // Поля
-      ticksLabels: ["1", "2", "3", "4", "5", ">6"],
+      ticksLabels: ["1", "2", "3", "4", "5", "> 6"],
     };
   },
   methods: {
     toggleFilter() {
       this.filter = !this.filter;
     },
-    addFlat() {
-      this.chosenFlats.push("1");
+    addFlat(res) {
+      this.chosenFlats.push(res.id);
+    },
+    removeFlat(res) {
+      let idx = res.id;
+      this.chosenFlats = this.chosenFlats.filter((t) => t !== idx);
+    },
+    postLink() {
+      try {
+        OffersAPI.create(this.chosenFlats);
+      } catch (error) {
+        console.log(error);
+      }
     },
     findFlats() {
       try {
@@ -207,7 +221,7 @@ export default {
           this.price_from,
           this.price_to
         ).then((res) => (this.copied = res.data));
-        this.filter = false
+        this.filter = false;
       } catch (error) {
         console.log(error);
       }
