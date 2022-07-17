@@ -1,5 +1,6 @@
 import API from "./API";
 
+const prefix = '/building'
 const getByFilter = (
     residential_complex,
     building,
@@ -16,6 +17,7 @@ const getByFilter = (
 const getFilterProperties = () => {
     return API.get(`${prefix}/filters`);
 }
+
 
 export default {
   getByFilter,

@@ -3,22 +3,15 @@
     <v-overlay :value="menu" color="#0f1e34" opacity="1">
       <v-row justify="center">
         <v-col cols="3">
-          <v-avatar
-            color="primary"
-            size="50"
-          >AP</v-avatar>
+          <v-avatar color="primary" size="50">AP</v-avatar>
         </v-col>
-        <v-col id="my_profile_text">
-          Мой профиль
-        </v-col>
+        <v-col id="my_profile_text"> Мой профиль </v-col>
       </v-row>
 
       <v-row>
-        <v-col sm="12">
-          <v-divider/>
-        </v-col>
+        <v-divider class="m-0" />
       </v-row>
-      
+
       <v-list id="menu" flat>
         <v-list-item
           v-for="(item, i) in items"
@@ -39,7 +32,7 @@
       </v-list>
     </v-overlay>
     <v-app-bar id="header" fixed app>
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title v-text="title"  @click="$router.push('/') "/>
       <v-spacer />
       <v-btn icon @click.stop="menu = !menu">
         <v-icon id="header__but"> mdi-menu </v-icon>
@@ -93,7 +86,7 @@ export default {
         {
           icon: "mdi-calculator",
           title: "Кредитный калькулятор",
-          to: "/",
+          to: "/calculator",
         },
         {
           icon: "mdi-signal-cellular-1",
@@ -109,7 +102,7 @@ export default {
           icon: "mdi-cog",
           title: "Настройки",
           to: "/",
-        }
+        },
       ],
       menu: false,
       title: "Поребрик",
@@ -140,12 +133,11 @@ export default {
 }
 
 #menu-item {
-  height: 66px;
+  max-height: 20px;
   text-align: left;
   justify-content: center;
   align-items: center;
   justify-items: center;
-
   color: white;
 }
 
@@ -155,7 +147,7 @@ export default {
   color: white;
 }
 
-#my_profile_text { 
+#my_profile_text {
   padding-top: 1.5rem;
 }
 </style>
