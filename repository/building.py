@@ -68,9 +68,17 @@ class BuildingRepository(BaseRepository):
         return query.all()
 
     def get_residential_complexes(self):
-        return self.session.query(
+        all = self.session.query(
             Building.residential_complex).distinct().all()
+        res = []
+        for i in all:
+            res.append(i[0])
+        return res
 
     def get_buildings(self):
-        return self.session.query(
+        all = self.session.query(
             Building.building).distinct().all()
+        res = []
+        for i in all:
+            res.append(i[0])
+        return res

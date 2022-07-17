@@ -11,10 +11,12 @@ class OfferRepository(BaseRepository):
         return self.session.query(Offer).filter(Offer.id == id).first()
 
     def create(self, data):
-        Offer = Offer(**data)
-        self.session.add(Offer)
+        offer = Offer(
+            building_ids=data
+        )
+        self.session.add(offer)
         self.session.commit()
-        return Offer
+        return offer
 
     def update(self, id, data):
         Offer = self.session.query(
