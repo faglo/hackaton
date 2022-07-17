@@ -1,14 +1,12 @@
 <template>
   <div>
-    <v-card rounded="8px" id="card" elevation="2" >
-      <v-img
-        width="104"
-        id="card__img"
-        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-      ></v-img>
+    <v-card rounded="8px" id="card" elevation="2">
+      <v-img width="104" height="104" id="card__img" :src="flatImg"></v-img>
       <div id="card__info">
         <div id="card__info-main">
-          <span style="font-size: 1rem; font-weight:600;">{{ flatName }}</span>
+          <span style="font-size: 1rem; font-weight: 600"
+            >Квартира, {{ flatArea }} м2
+          </span>
           <!-- <v-rating
             :value="4.5"
             color="blue"
@@ -17,7 +15,7 @@
             readonly
             size="14"
           ></v-rating> -->
-          <span style="max-width: 120px; font-size: 0.8rem; font-weight: 400;">{{
+          <span style="max-width: 120px; font-size: 0.8rem; font-weight: 400">{{
             flatAddr
           }}</span>
         </div>
@@ -40,11 +38,16 @@ export default {
       required: true,
     },
     flatPrice: {
-      type: Number,
       required: true,
     },
     flatAddr: {
       type: String,
+      required: true,
+    },
+    flatImg: {
+      required: true,
+    },
+    flatArea: {
       required: true,
     },
   },
