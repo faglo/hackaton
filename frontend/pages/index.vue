@@ -1,9 +1,7 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      ничего нету здесь
-    </v-col>
-  </v-row>
+  <div id="txt">
+    Не успели 😞
+  </div>
 </template>
 
 <script>
@@ -11,3 +9,10 @@ export default {
   name: 'IndexPage'
 }
 </script>
+<style scoped>
+#txt {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+}
+</style>
