@@ -50,23 +50,30 @@
 import "../assets/global.scss";
 export default {
   name: "DefaultLayout",
-  created() {
+
+  beforeCreate() {
     let param = this.$route.fullPath;
     console.log(param);
-    if (param == "/clients") {
+    if (param == "/clients/") {
       this.title = "Клиенты";
-    } else if (param == "/create_object") {
+    } else if (param == "/create_object/") {
       this.title = "Объекты недвижимости";
-    } else if (param == "/constructor") {
+    } else if (param == "/constructor/") {
       this.title = "Конструктор предложений";
-    } else if (param == "/calculator") {
+    } else if (param == "/calculator/") {
       this.title = "Кредитный калькулятор";
-    } else if (param == "/money") {
+    } else if (param == "/money/") {
       this.title = "Вознаграждения";
-    } else if (param == "/tasks") {
+    } else if (param == "/tasks/") {
       this.title = "Задачи";
-    } else if (param == "/booking") {
+    } else if (param == "/booking/") {
       this.title = "Бронирование просмотра";
+    } else if (param == "/stud/") {
+      this.title = "Обучение";
+    } else if (param == "/lytc/") {
+      this.title = "Аналитика";
+    } else{
+      this.title = "Паребрик"
     }
   },
   data() {
@@ -75,52 +82,52 @@ export default {
         {
           icon: "mdi-cash-multiple",
           title: "Вознаграждения",
-          to: "/money",
+          to: "/money/",
         },
         {
           icon: "mdi-account-multiple",
           title: "Клиенты",
-          to: "/clients",
+          to: "/clients/",
         },
         {
           icon: "mdi-clock-outline",
           title: "Задачи",
-          to: "/tasks",
+          to: "/tasks/",
         },
         {
           icon: "mdi-home-city",
           title: "Объекты недвижимости",
-          to: "/create_object",
+          to: "/create_object/",
         },
         {
           icon: "mdi-plus-box",
           title: "Конструктор предложений",
-          to: "/constructor",
+          to: "/constructor/",
         },
         {
           icon: "mdi-timer-sand-full",
           title: "Бронирование просмотра",
-          to: "/booking",
+          to: "/booking/",
         },
         {
           icon: "mdi-calculator",
           title: "Кредитный калькулятор",
-          to: "/calculator",
+          to: "/calculator/",
         },
         {
           icon: "mdi-signal-cellular-1",
           title: "Аналитика",
-          to: "/",
+          to: "/lytc/",
         },
         {
           icon: "mdi-school",
           title: "Обучение",
-          to: "/",
+          to: "/stud/",
         },
         {
           icon: "mdi-cog",
           title: "Настройки",
-          to: "/settings",
+          to: "/settings/",
         },
       ],
       menu: false,
@@ -129,24 +136,24 @@ export default {
   },
   methods: {
     chg() {
-      this.menu = false;
       let param = this.$route.fullPath;
       console.log(param);
-      if (param == "/clients") {
+      if (param === "/clients/") {
         this.title = "Клиенты";
-      } else if (param == "/create_object") {
+      } else if (param === "/create_object/") {
         this.title = "Объекты недвижимости";
-      } else if (param == "/constructor") {
+      } else if (param === "/constructor/") {
         this.title = "Конструктор предложений";
-      } else if (param == "/calculator") {
+      } else if (param === "/calculator/") {
         this.title = "Кредитный калькулятор";
-      } else if (param == "/money") {
+      } else if (param === "/money/") {
         this.title = "Вознаграждения";
-      } else if (param == "/tasks") {
+      } else if (param === "/tasks/") {
         this.title = "Задачи";
-      } else if (param == "/booking") {
+      } else if (param === "/booking/") {
         this.title = "Бронирование просмотра";
       }
+      this.menu = false;
     },
   },
 };
