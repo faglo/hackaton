@@ -16,7 +16,11 @@ class OfferRepository(BaseRepository):
         )
         self.session.add(offer)
         self.session.commit()
-        return offer
+        self.session.refresh(offer)
+        return {
+            "status": "ok",
+            "id": offer.id
+        }
 
     def update(self, id, data):
         Offer = self.session.query(
