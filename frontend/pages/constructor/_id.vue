@@ -1,5 +1,8 @@
 <template>
   <div class="cards">
+    <div>
+      <v-text-field outlined :value="slug" readonly> </v-text-field>
+    </div>
     <p>По вашим запросам нашло {{ copied.length }} варианта !</p>
     <div class="cards__grid">
       <Card
@@ -10,7 +13,6 @@
         :flat-price="res.price"
         :flat-addr="res.address"
         :flat-img="res.photo_links[0]"
-        
       />
     </div>
   </div>
@@ -24,7 +26,14 @@ export default {
   data() {
     return {
       copied: {},
+      fullParam: "",
     };
+  },
+  computed: {
+    slug: function () {
+      let param = this.$route.fullPath;
+      return (this.fullParam = `http://92.63.105.59/${param}`);
+    },
   },
   mounted() {
     OffersAPI.getById(this.$route.params.id).then((r) => {
