@@ -69,7 +69,7 @@ class BuildingRepository(BaseRepository):
 
     def get_residential_complexes(self):
         all = self.session.query(
-            Building.residential_complex).distinct().all()
+            Building.residential_complex).order_by(Building.residential_complex).distinct().all()
         res = []
         for i in all:
             res.append(i[0])
@@ -77,7 +77,7 @@ class BuildingRepository(BaseRepository):
 
     def get_buildings(self):
         all = self.session.query(
-            Building.building).distinct().all()
+            Building.building).order_by(Building.building).distinct().all()
         res = []
         for i in all:
             res.append(i[0])

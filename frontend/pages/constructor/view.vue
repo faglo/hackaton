@@ -1,9 +1,7 @@
 <template>
-  <div class="cards">
-    <div>
-      <v-text-field outlined :value="slug" readonly> </v-text-field>
-    </div>
-    <!-- <p>По вашим запросам нашло {{ copied.length }} варианта !</p> -->
+  <div class="cards" style="padding:10px;">
+    <h3 style="padding:10px;">Вам подобрали {{ copied.length }} варианта!</h3>
+    <v-divider style="padding:10px;"/>
     <div class="cards__grid">
       <div v-for="(res, id) in copied" :key="id">
         <div>
@@ -58,16 +56,8 @@
             </div>
           </div>
         </div>
+        <v-divider light/>
       </div>
-
-      <!-- <Card
-        :key="id"
-        :flat-name="res.building"
-        :flat-area="res.area"
-        :flat-price="res.price"
-        :flat-addr="res.address"
-        :flat-img="res.photo_links[0]"
-      /> -->
     </div>
   </div>
 </template>
@@ -76,11 +66,13 @@
 import OffersAPI from "~/API/OffersAPI";
 import Card from "~/components/Card.vue";
 export default {
+  layout: "user",
   components: { Card },
   data() {
     return {
       copied: {},
       fullParam: "",
+      copy_s: false,
     };
   },
   computed: {
@@ -94,6 +86,13 @@ export default {
       console.log(r.data);
       this.copied = r.data;
     });
+  },
+  methods: {
+    copy() {
+      navigator.clipboard.writeText(`http://92.63.105.59/constructed/?id=${this.$route.query.id}`).then(() => {
+        this.copy_s = true;
+      })
+    },
   },
 };
 </script>

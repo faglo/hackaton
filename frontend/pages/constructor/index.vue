@@ -204,7 +204,7 @@ export default {
     postLink() {
       try {
         OffersAPI.create(this.chosenFlats).then(r => {
-            this.$router.push('/constructed/?id='+r.data.id)
+            this.$router.push('/constructor/created/?id='+r.data.id)
         });
         // this.$router.push('/constructor' + )
       } catch (error) {
