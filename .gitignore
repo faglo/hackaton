@@ -13,6 +13,7 @@ p.csv
 .env
 env
 postgres/.env.db
+frontend/static/sw.js
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
