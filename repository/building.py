@@ -35,35 +35,35 @@ class BuildingRepository(BaseRepository):
 
     def get_by_filters(
         self,
-        residential_complex: str = None,
-        building: str = None,
-        area_from: int = None,
-        area_to: int = None,
-        rooms: int = None,
-        floor_from: int = None,
-        floor_to: int = None,
-        price_from: int = None,
-        price_to: int = None,
+        residential_complex: str = "",
+        building: str = "",
+        area_from: int = 0,
+        area_to: int = 0,
+        rooms: int = 0,
+        floor_from: int = 0,
+        floor_to: int = 0,
+        price_from: int = 0,
+        price_to: int = 0,
     ):
         query = self.session.query(Building)
-        if residential_complex:
+        if residential_complex != "":
             query = query.filter(
                 Building.residential_complex == residential_complex)
-        if building:
+        if building != "":
             query = query.filter(Building.building == building)
-        if area_from:
+        if area_from != 0:
             query = query.filter(Building.area >= area_from)
-        if area_to:
+        if area_to != 0:
             query = query.filter(Building.area <= area_to)
-        if rooms:
+        if rooms != 0:
             query = query.filter(Building.rooms == rooms)
-        if floor_from:
+        if floor_from != 0:
             query = query.filter(Building.floor >= floor_from)
-        if floor_to:
+        if floor_to != 0:
             query = query.filter(Building.floor <= floor_to)
-        if price_from:
+        if price_from != 0:
             query = query.filter(Building.price >= price_from)
-        if price_to:
+        if price_to != 0:
             query = query.filter(Building.price <= price_to)
         return query.all()
 
