@@ -40,8 +40,7 @@ class OfferRepository(BaseRepository):
         building_ids = self.session.query(
             Offer.building_ids).filter(Offer.id == offer_id).first()
         if building_ids:
-            print(building_ids)
             return self.session.query(Building).filter(
-                Building.id.in_(building_ids)).all()
+                Building.id.in_(building_ids[0])).all()
         else:
             return []
