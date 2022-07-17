@@ -1,5 +1,0 @@
-FROM node:16-slim
-COPY ./frontend /app
-WORKDIR /app
-RUN yarn install
-CMD ["yarn", "dev"]

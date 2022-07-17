@@ -32,7 +32,7 @@ export default {
   computed: {
     slug: function () {
       let param = this.$route.fullPath;
-      return (this.fullParam = `http://92.63.105.59${param}`);
+      return (this.fullParam = `http://92.63.105.59/${param}`);
     },
   },
   mounted() {
