@@ -8,6 +8,7 @@ from alembic import context
 from configs.vars import DATABASE_URL
 from database.base import Base
 from models.building import Building
+from models.offer import Offer
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
