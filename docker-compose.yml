@@ -12,7 +12,7 @@ services:
       - .env
   server:
     ports:
-      - 80:8000
+      - 3000:3000
     networks:
       - container_net
     build: .
@@ -21,6 +21,19 @@ services:
         condition: service_started
     volumes:
       - .:/app
+  frontend:
+    ports:
+      - 80:3000
+    networks:
+      - container_net
+    depends_on:
+      server:
+        condition: service_started
+    volumes:
+      - ./frontend:/app
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
 networks:
   container_net:
     external: true
