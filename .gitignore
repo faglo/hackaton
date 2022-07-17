@@ -8,12 +8,12 @@ frontend/node_modules
 frontend/dist
 frontend/.nuxt
 frontend/static/sw.js
+frontend/static/sw
 test.py
 p.csv
 .env
 env
 postgres/.env.db
-frontend/static/sw.js
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -42,6 +42,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
