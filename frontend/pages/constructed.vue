@@ -85,12 +85,12 @@ export default {
   },
   computed: {
     slug: function () {
-      let param = this.$route.fullPath;
-      return (this.fullParam = `http://92.63.105.59${param}`);
+      let param = this.$route.query.id;
+      return (this.fullParam = `http://92.63.105.59/constructed/?id=${param}`);
     },
   },
   mounted() {
-    OffersAPI.getById(this.$route.params.id).then((r) => {
+    OffersAPI.getById(this.$route.query.id).then((r) => {
       console.log(r.data);
       this.copied = r.data;
     });
